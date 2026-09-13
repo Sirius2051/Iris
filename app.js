@@ -50,7 +50,7 @@ const semillaDe = (n) => (semillaMundo * 7919 + n * 104729) | 0;
 const NIVELES = 7;
 const COLORES = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'];
 const TONOS = [0, 30, 60, 120, 240, 275, 282];
-const NOMBRES = ['ROJO', 'NARANJA', 'AMARILLO', 'VERDE', 'AZUL', 'ÍNDIGO', 'VIOLETA'];
+const NOMBRES = ['RED', 'ORANGE', 'YELLOW', 'GREEN', 'BLUE', 'INDIGO', 'VIOLET'];
 
 let colores = 0;
 let irisBlanca = false;
@@ -656,30 +656,30 @@ let letrero = null;
 let relojFinal = 0;
 
 const ABRE = [
-  'LA TIERRA SE ABRIÓ.',
-  'SAMANTA QUEDÓ AL OTRO LADO DEL ABISMO.',
+  'THE EARTH SPLIT OPEN.',
+  'SAMANTA WAS LEFT ON THE FAR SIDE.',
   '',
-  'SERGIO, VE POR ELLA.'
+  'GO GET HER, SERGIO.'
 ];
 
 const ENCUENTRO = [
-  'NOTÓ QUE ALGO LO SEGUÍA.',
-  'ERA UN UNICORNIO SIN COLOR.',
+  'HE FELT SOMETHING FOLLOWING HIM.',
+  'A UNICORN WITH NO COLOUR LEFT.',
   '',
-  '«ME LOS QUITARON» DIJO IRIS.',
+  '"THEY TOOK THEM FROM ME," SAID IRIS.',
   '',
-  'SERGIO PODÍA DEJARLA.',
-  'PERO SABÍA LO QUE ERA LA SOLEDAD.'
+  'SERGIO COULD HAVE LEFT HER.',
+  'BUT HE KNEW WHAT BEING ALONE WAS.'
 ];
 
 const LETREROS = [
-  ['HAN RECUPERADO EL ROJO.', 'IRIS SIENTE LATIR ALGO.'],
-  ['HAN RECUPERADO EL NARANJA.', 'LOS HOMBRES LOS SIGUEN.'],
-  ['HAN RECUPERADO EL AMARILLO.', 'IRIS YA PROYECTA LUZ.'],
-  ['HAN RECUPERADO EL VERDE.', 'EL ABISMO SE HACE MÁS ANCHO.'],
-  ['HAN RECUPERADO EL AZUL.', 'IRIS CORRE MÁS DEPRISA.'],
-  ['HAN RECUPERADO EL ÍNDIGO.', 'FALTA UNO.'],
-  ['HAN RECUPERADO EL VIOLETA.', 'IRIS VUELVE A SER BLANCA Y BRILLANTE.']
+  ['THEY RECOVERED THE RED.', 'IRIS FEELS SOMETHING BEATING.'],
+  ['THEY RECOVERED THE ORANGE.', 'THE MEN ARE ON THEIR TRAIL.'],
+  ['THEY RECOVERED THE YELLOW.', 'IRIS CASTS LIGHT NOW.'],
+  ['THEY RECOVERED THE GREEN.', 'THE CHASM GROWS WIDER.'],
+  ['THEY RECOVERED THE BLUE.', 'IRIS RUNS FASTER.'],
+  ['THEY RECOVERED THE INDIGO.', 'ONE LEFT.'],
+  ['THEY RECOVERED THE VIOLET.', 'IRIS IS WHITE AND BRIGHT AGAIN.']
 ];
 
 function contar(lineas, despues) {
@@ -788,7 +788,7 @@ function dibujarMarcador(m) {
   ctx.textAlign = 'left';
   ctx.font = '16px monospace';
   ctx.fillStyle = '#ffffff';
-  ctx.fillText(`NIVEL ${nivel + 1}/${NIVELES}`, 20, 28);
+  ctx.fillText(`LEVEL ${nivel + 1}/${NIVELES}`, 20, 28);
 
   for (let i = 0; i < NIVELES; i++) {
     ctx.fillStyle = i < colores ? COLORES[i] : '#2a2f3a';
@@ -846,8 +846,8 @@ function dibujarPortada() {
   ctx.fillText('IRIS', ANCHO / 2, 190);
   ctx.textAlign = 'left';
 
-  centrado('Recupera los siete colores', 228, 18, '#9b93b8');
-  if (parpadea()) centrado('PRESIONA ENTER', 420, 22, '#ffffff');
+  centrado('Recover the seven colours', 228, 18, '#9b93b8');
+  if (parpadea()) centrado('PRESS ENTER', 420, 22, '#ffffff');
 
   blit(sprites.sergio[1], 120, 470, false);
   blit(sprites.iris[1], 620, 470, true);
@@ -873,10 +873,10 @@ function dibujarLetrero() {
 function dibujarDerrota() {
   ctx.fillStyle = '#0a0812';
   ctx.fillRect(0, 0, ANCHO, ALTO);
-  centrado('SIN VIDAS', 220, 46, '#e05a5a');
-  centrado(`El abismo se tragó a Sergio en el nivel ${nivel + 1}.`, 300, 18, '#ffffff');
-  centrado("Iris vuelve a estar gris.", 332, 18, '#7d7796');
-  centrado('Presiona ENTER para empezar de nuevo', 420, 18, '#4caf50');
+  centrado('NO LIVES LEFT', 220, 46, '#e05a5a');
+  centrado(`The chasm swallowed Sergio on level ${nivel + 1}.`, 300, 18, '#ffffff');
+  centrado("Iris is grey once more.", 332, 18, '#7d7796');
+  centrado('Press ENTER to start over', 420, 18, '#4caf50');
   if (teclas.entra) empezar();
 }
 
@@ -951,7 +951,7 @@ function dibujarFinal() {
   }
 
   if (relojFinal > 11.5) {
-    centrado('IRIS SE SACRIFICÓ PARA QUE VOLVIERAN A ESTAR JUNTOS.', 500, 20, '#cfc8e6');
+    centrado('IRIS GAVE HERSELF UP SO THEY COULD BE TOGETHER.', 500, 20, '#cfc8e6');
     if (parpadea()) centrado('ENTER', 534, 15, '#6a6488');
     if (teclas.entra) {
       escena = 'PORTADA';
@@ -1003,8 +1003,8 @@ function dibujarPartida(vista) {
   }
 
   dibujarMarcador(mapa);
-  if (floracion >= 0) centrado(`HAN RECUPERADO EL ${NOMBRES[nivel]}`, 130, 24, '#ffffff');
-  if (floracion >= 0) centrado('+1 VIDA', 162, 16, '#cfc8e6');
+  if (floracion >= 0) centrado(`${NOMBRES[nivel]} RECOVERED`, 130, 24, '#ffffff');
+  if (floracion >= 0) centrado('+1 LIFE', 162, 16, '#cfc8e6');
 }
 
 function bucle() {
@@ -1046,8 +1046,8 @@ function bucle() {
 const ayuda = document.createElement('div');
 ayuda.style.cssText = 'margin-top:16px;max-width:800px;text-align:center;font:14px monospace;color:#8f88b0;line-height:1.9;letter-spacing:.5px';
 [
-  '[A y D] Moverse   |   [W] Saltar   |   [M] Disparar   |   [R] Reiniciar   |   [N] Silencio',
-  'Tienes tres vidas. Ganas una por cada color   |   A los enemigos les puede caer encima'
+  '[A and D] Move   |   [W] Jump   |   [M] Shoot   |   [R] Restart   |   [N] Mute',
+  'You have three lives. Each colour grants one   |   You can also land on the enemies'
 ].forEach((linea) => {
   const fila = document.createElement('p');
   fila.textContent = linea;
